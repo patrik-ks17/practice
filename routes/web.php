@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TesztController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('teszt', [TesztController::class,'index']);
+Route::get('names', [TesztController::class,'names']);
+Route::post('names/create', [TesztController::class,'store']);
+
