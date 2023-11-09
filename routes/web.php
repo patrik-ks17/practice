@@ -19,6 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('teszt', [TesztController::class,'index']);
-Route::get('names', [TesztController::class,'names']);
-Route::post('names/create', [TesztController::class,'store']);
 
+Route::get('names', [TesztController::class,'names']);
+Route::post('names/create', [TesztController::class,'nameStore']);
+Route::delete('/names/delete/{name}', [TesztController::class, 'nameDestroy']);
+
+Route::get('/surname', [TesztController::class, 'surnames']);
+Route::post('/families/create', [TesztController::class, 'familyStore']);
+Route::delete('/families/delete/{name}', [TesztController::class, 'familyDestroy']);
