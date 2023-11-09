@@ -31,7 +31,7 @@ class TesztController extends Controller
 
     public function nameStore(Request $request) {
         $validated = $request->validate([
-            'name' => 'required|min:2|max:20',
+            'name' => 'required|alpha|min:2|max:20',
             'family_id' => 'required'
         ]);
         Name::create($validated);
@@ -41,7 +41,7 @@ class TesztController extends Controller
 
     public function familyStore(Request $request) {
         $validated = $request->validate([
-            'surname' => 'required|min:2|max:20'
+            'surname' => 'required|alpha|min:2|max:20'
         ]);
         Family::create($validated);
         // $familyRecord = new Family();

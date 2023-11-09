@@ -34,7 +34,14 @@
         <div class="mb-5">
             <form method="POST" action="/families/create">
                 @csrf
-                <input type="text" name="surname" required>
+                <input type="text" name="surname" value="{{ old("surname") }}" required>
+                @if($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="alert alert-danger">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             <button type="submit">Hozzáad</button>
         </div>
         </form>
