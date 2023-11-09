@@ -20,28 +20,33 @@ class TesztController extends Controller
     public function names()
     {
         $names = Name::all();
-        $surnames = Family::all();
-        return view('pages.names', compact('names', 'surnames'));
+        $family = Family::all();
+        return view('pages.names', compact('names', 'family'));
     }
 
     public function surnames() {
-        $surnames = Family::all();
-        return view('pages.surnames', compact('surnames'));
+        $family = Family::all();
+        return view('pages.surnames', compact('family'));
     }
 
     public function nameStore(Request $request) {
-        $nameRecord = new Name();
-        $nameRecord->name = $request->name;
-        $nameRecord->family_id = $request->family;
-        $nameRecord->save();
+        $validated = $request->validate([
+            'name' => 'required|min:2|max:20',
+            'family_id' => 'required'
+        ]);
+        Name::create($validated);
 
         return back()->with('success', 'Name added');
     }
 
     public function familyStore(Request $request) {
-        $familyRecord = new Family();
-        $familyRecord->surname =$request->name;
-        $familyRecord->save();
+        $validated = $request->validate([
+            'surname' => 'required|min:2|max:20'
+        ]);
+        Family::create($validated);
+        // $familyRecord = new Family();
+        // $familyRecord->surname =$request->surname;
+        // $familyRecord->save();
 
         return back()->with('success', 'Family added');
     }

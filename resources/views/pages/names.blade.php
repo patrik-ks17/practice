@@ -41,8 +41,8 @@
             <form method="POST" action="/names/create">
                 @csrf
                 <label for="family">Családnév:</label>
-                <select name="family">
-                    @foreach ($surnames as $surname)
+                <select name="family_id">
+                    @foreach ($family as $surname)
                         <option value="{{ $surname->id }}">{{ $surname->surname }}</option>
                     @endforeach
                 </select>

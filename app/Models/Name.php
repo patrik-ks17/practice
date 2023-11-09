@@ -9,6 +9,8 @@ class Name extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function family() {
         return $this->belongsTo(Family::class);
     }

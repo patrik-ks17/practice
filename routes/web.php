@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('teszt', [TesztController::class,'index']);
 
 Route::get('names', [TesztController::class,'names']);
-Route::post('names/create', [TesztController::class,'nameStore']);
+Route::post('/names/create', [TesztController::class,'nameStore']);
 Route::delete('/names/delete/{name}', [TesztController::class, 'nameDestroy']);
 
 Route::get('/surname', [TesztController::class, 'surnames']);

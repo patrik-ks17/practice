@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($surnames as $name)
+                @foreach($family as $name)
                     <tr>
                         <td>{{ $name->id }}</td>
                         <td>{{ $name->surname }}</td>
@@ -34,7 +34,7 @@
         <div class="mb-5">
             <form method="POST" action="/families/create">
                 @csrf
-                <input type="text" name="name" required>
+                <input type="text" name="surname" required>
             <button type="submit">Hozzáad</button>
         </div>
         </form>
