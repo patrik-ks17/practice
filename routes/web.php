@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TesztController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('teszt', [TesztController::class,'index']);
+Route::get('teszt', [TesztController::class,'index'])->name('teszt');
 
 Route::get('names', [TesztController::class,'names']);
-Route::post('/names/create', [TesztController::class,'nameStore']);
-Route::delete('/names/delete/{name}', [TesztController::class, 'nameDestroy']);
+Route::post('/names/create', [TesztController::class,'nameStore'])->middleware('auth');
+Route::delete('/names/delete/{name}', [TesztController::class, 'nameDestroy'])->middleware('auth');
 
 Route::get('/surname', [TesztController::class, 'surnames']);
-Route::post('/families/create', [TesztController::class, 'familyStore']);
-Route::delete('/families/delete/{name}', [TesztController::class, 'familyDestroy']);
+Route::post('/families/create', [TesztController::class, 'familyStore'])->middleware('auth');
+Route::delete('/families/delete/{name}', [TesztController::class, 'familyDestroy'])->middleware('auth');
+
